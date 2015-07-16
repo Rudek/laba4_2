@@ -4,6 +4,7 @@ package ua.edu.sumdu.j2ee.maxim.laba4.sessions;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.interceptor.Interceptors;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -12,9 +13,11 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import ua.edu.sumdu.j2ee.maxim.laba4.entities.User;
+import ua.edu.sumdu.j2ee.maxim.laba4.interceptors.LoggerBeanInterceptor;
 
 
 @Stateless(mappedName="SessionsBean")
+@Interceptors(LoggerBeanInterceptor.class)
 public class UserSessionBean implements UserSessionBeanRemote {
 	
 	//private static final Logger logger = LogManager.getLogger("EJB");
