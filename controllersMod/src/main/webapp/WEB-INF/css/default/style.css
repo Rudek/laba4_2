@@ -402,7 +402,7 @@
 }
 .jstree-default .jstree-icon:empty {
   width: 18px;
-  height: 12px;
+  height: 18px;
   padding-top:6px;
   line-height: 12px;
 }
@@ -690,6 +690,7 @@
   line-height: 18px;
   padding: 0 4px;
 }
+
 #jstree-dnd.jstree-default-small .jstree-ok,
 #jstree-dnd.jstree-default-small .jstree-er {
   background-image: url("32px.png");

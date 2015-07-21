@@ -38,13 +38,15 @@ public class CategoryController {
 	CategorySessionBeanRemote categoryBeanRemote;
 	
     @RequestMapping(value="")
-    public String allCategories(Map<String, Object> map) {
+    public String allCategories(Map<String, Object> map, Locale locale) {
     	map.put("categories",categoryBeanRemote.getAllCategories());
+    	map.put ( "title", messageSource.getMessage("category.category", new Object[0], locale) );
     	return "categories";
     }
 
 	@RequestMapping(value="/add", method=RequestMethod.GET)
-	public String addCategory(Map<String, Object> map) {
+	public String addCategory(Map<String, Object> map, Locale locale) {
+		map.put ( "title", messageSource.getMessage("category.add", new Object[0], locale) );
 		map.put ( "category", new Category() );
 	    map.put ( "categories", categoryBeanRemote.getAllCategories());
 		return "addCategory";
@@ -60,6 +62,7 @@ public class CategoryController {
 	    	map.put("error", messageSource.getMessage("category.NotFound", new Object[0], locale) );
 			throw new CategoryNotFoundException(id);
     	}
+    	map.put ( "title", messageSource.getMessage("category.update", new Object[0], locale) );
     	map.put ( "category", category );
     	map.put ( "categories", categoryBeanRemote.getAllCategoriesExceptId(id));
 	    return "addCategory";

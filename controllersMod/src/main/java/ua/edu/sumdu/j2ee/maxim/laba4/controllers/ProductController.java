@@ -60,7 +60,7 @@ public class ProductController {
 							   	     @RequestParam(value = "count", required=false) Integer countEntity,
 						    		 @RequestParam(value = "sortby", required=false) String sortBy,				         
 									 @RequestParam(value = "order", required=false) String order,
-    						   		 HttpServletRequest request) throws IllegalSortFieldException {
+    						   		 HttpServletRequest request, Locale locale) throws IllegalSortFieldException {
     	ModelAndView mav = new ModelAndView("products");
     	
     	countEntity = countEntity == null ? DEFAULT_COUNT_ENTITY : countEntity;
@@ -74,7 +74,7 @@ public class ProductController {
     	paramsURI.put( "sortby", sortBy);
     	paramsURI.put("order", order);
     	mav.addObject( "paramsURI", paramsURI(paramsURI) );
-    	
+    	mav.addObject( "title", messageSource.getMessage("menu.products", new Object[0], locale) );
     	mav.addObject( "products", productBeanRemote.getAllProducts( sortBy, order, start, countEntity ) );
     	return mav;
     }
@@ -125,9 +125,10 @@ public class ProductController {
     }
     
 	@RequestMapping(value="/add", method=RequestMethod.GET)
-	public String addProduct(Map<String, Object> map) {
+	public String addProduct(Map<String, Object> map, Locale locale) {
 		map.put ( "product", new Product() );
 	    map.put ( "categories", categoryBeanRemote.getAllCategories());
+	    map.put( "title", messageSource.getMessage("product.add", new Object[0], locale) );
 		return "addProduct";
 	}
 	
@@ -142,6 +143,7 @@ public class ProductController {
     	}
 		map.put ( "product", product );
     	map.put ( "categories", categoryBeanRemote.getAllCategories());
+    	map.put( "title", messageSource.getMessage("product.update", new Object[0], locale) );
 	    return "addProduct";
     }
     

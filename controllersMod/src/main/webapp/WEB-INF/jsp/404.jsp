@@ -1,5 +1,5 @@
-		<p class="error">
-			404. Станица не найдена.<br/>
+		<p class="class="text-danger text-center"">
+			404. <sptring:message code="pageNotFound"/><br/>
 			<c:if test="${not empty message}">
 				${message}
 			</c:if>

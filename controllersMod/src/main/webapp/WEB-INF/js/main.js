@@ -11,7 +11,7 @@ function apply_login()
             $('.login-form').dialog('open');
         });
 
-        $('.login-form').find('.close').click(function(){
+        $('.login-form').find('.my-close').click(function(){
             $('.login-form').dialog('close');
         });
     }
@@ -31,15 +31,15 @@ function remove_item() {
             var type = typeOfActivities[0];
             var finishing = categoryGood[0];
             var additionally = help[0];
-            
+            var td_ = $(this).parent().parent().children('td').eq(1);
             var cont = $(this).attr('href').split('/');
             if ( cont[0] == 'product' ) {
                 type = typeOfActivities[1];
                 finishing = categoryGood[1];
                 additionally = help[1];
-            }
+                var td_ = $(this).parent().parent().parent().find('h3.title');
+            } 
             
-            var td_ = $(this).parent().parent().children('td').eq(1);
             
             $('.remove-dialog .text').text(sprintf(textRemove,type,td_.text().trim(),additionally));
             $('.remove-dialog .question').text(sprintf(questionRemove,finishing,type));
@@ -48,7 +48,7 @@ function remove_item() {
             e.preventDefault();
         });
 
-        $('.remove-dialog').find('.close').click(function(){
+        $('.remove-dialog').find('.my-close').click(function(){
             $('.remove-dialog').dialog('close');
         });
     }

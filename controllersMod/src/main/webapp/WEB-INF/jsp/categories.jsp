@@ -1,5 +1,5 @@
 			<h3 class="title"><spring:message code="category.category"/></h3>
-			<table class="table-center">
+			<table class="table table-bordered">
 				
 				<thead>
 					<tr>
@@ -11,8 +11,8 @@
 					<tr>
 						<td class="number">${indexLoop.index+1}</td>
 						<td class="name">${category.name}</td>
-						<td class="edit"><a class="edit" href="category/edit/${category.id}"></a></td>
-						<td class="edit"><a class="delete" href="category/delete/${category.id}"></a></td>
+						<td class="edit"><a class="edit" href="category/edit/${category.id}"><span class="glyphicon glyphicon-edit"></span></a></td>
+						<td class="edit"><a class="delete" href="category/delete/${category.id}"><span class="glyphicon glyphicon-remove"></span></a></td>
 					</tr>
 				</c:forEach>
 			</table>

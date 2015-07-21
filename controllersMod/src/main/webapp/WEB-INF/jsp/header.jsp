@@ -4,11 +4,12 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %> 
 <%@ page contentType="text/html; charset=UTF-8" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<base href="${pageContext.request.contextPath}/">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>${title}</title>
 	<script type="text/javascript">
 		var lang = "ua";
@@ -22,12 +23,12 @@
 		var questionRemove = "Вы действительно хотите удалить выбранн%s %s?";
 	</script>
 	
+	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
 	<script src="js/jquery-ui.min.js" type="text/javascript"></script>
 	<script src="js/jstree.min.js" type="text/javascript"></script>
 	<script src="js/sprintf.min.js" type="text/javascript"></script>
 	<script src="js/main.js" type="text/javascript"></script>
-	
 	<script type="text/javascript">
 		var data = ${jsonCategories}; 
 		
@@ -51,43 +52,56 @@
 			});
 		});
 	</script>
-	
-	<link rel="stylesheet" href="css/jquery-ui.css" type="text/css" />
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-	<link rel="stylesheet" href="css/default/style.css" type="text/css" />
-	
+	<link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/default/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/sticky-footer-navbar.css" rel="stylesheet" type="text/css" >
+	<link href="css/style.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-	<div class="page">
-		<div class="wrapper">
-			<div class="header">
-				<ul class="menu">
-					<li><a href="${pageContext.request.contextPath}/"><spring:message code="menu.main"/></a></li>
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		        </button>
+		        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><spring:message code="menu.main"/></a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
 					<li><a href="category"><spring:message code="category.category"/></a></li>
 					<li><a href="product"><spring:message code="menu.products"/></a></li>
 					<li><a href="category/add"><spring:message code="menu.addCategory"/></a></li>
 					<li><a href="product/add"><spring:message code="menu.addProduct"/></a></li>
 					<security:authorize access="!isAuthenticated()">
-						<li class="last login"><a class="login" onclick="return false;" href="/">Авторизация</a></li>
+						<li class="login"><a class="login" onclick="return false;" href="/">Авторизация</a></li>
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
-						<li class="last"><a href="j_spring_security_logout">Выход</a></li>
+						<li ><a href="j_spring_security_logout">Выход</a></li>
 					</security:authorize>
 				</ul>
 			</div>
+		</div>
+	</div>
+		
+	<div class="container">	
+		<!-- <div class="left-side"> -->
+		<div class="col-md-4">
+			<h3>Категории</h3>
+			<div id="jstree">
 			
-			<div class="left-side">
-				<h3>Категории</h3>
-				<div id="jstree">
-				
-				</div>
 			</div>
-			<div class="content">
-				<c:if test="${not empty error}">
-					<p class="error">${error}</p>
-				</c:if>
-				<c:if test="${not empty info}">
-					<p class="info">${info}</p>
-				</c:if>
-			
+		</div>
+		
+		<div class="col-md-8">
+			<c:if test="${not empty error}">
+				<p class="text-danger text-center">${error}</p>
+			</c:if>
+			<c:if test="${not empty info}">
+				<p class="text-info text-center">${info}</p>
+			</c:if>
+				
 			

@@ -1,4 +1,4 @@
-		<p class="error">
+		<p class="text-danger text-center">
 			<spring:message code="access.deny" /><br/>
 			<c:if test="${not empty message}">
 				${message}
