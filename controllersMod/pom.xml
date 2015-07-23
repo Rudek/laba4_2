@@ -12,7 +12,7 @@
   <artifactId>controllersMod</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
-  <name>laba4</name>
+  <name>controllersMod</name>
   <url>http://maven.apache.org</url>
   
   <properties>
@@ -103,7 +103,7 @@
 	</dependency>
   </dependencies>
   <build>
-    <finalName>laba4</finalName>
+    <finalName>controllersMod</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

@@ -31,7 +31,7 @@
         <configuration>
             <!-- version>6</version>
             <defaultLibBundleDir>lib</defaultLibBundleDir -->
-            <earName>earModule</earName>
+            <earName>laba4</earName>
 			<outputDirectory>C:\Oracle\Middleware12\user_projects\domains\laba4\autodeploy\</outputDirectory>
 			<modules>
 	           <webModule>
